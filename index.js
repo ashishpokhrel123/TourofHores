@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const heroes = require('./models/heroes');
 const url = 'mongodb://localhost:27017/tohdb';
 const testRouter = require('./routes/heroes');
+const categoryRouter = require('./routes/villans');
 const PORT = 3000;
 const app = express();
 
@@ -17,6 +18,7 @@ app.use(express.json());
 app.use(express.static(__dirname + "/public")); //serving static pages
 
 app.use('/heroes',testRouter);
+app.use('/villans',categoryRouter);
 app.listen(PORT,()=>{
     console.log(`App is running at localhost:${PORT}`);
 });
