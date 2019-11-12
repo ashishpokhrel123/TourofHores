@@ -14,7 +14,12 @@ const heroesSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    comment: [commentSchema]
+    comment: [commentSchema],
+    fight:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'Villans'
+
+    }]
 },{timestamps:true});
 
 module.exports = mongoose.model('heroes', heroesSchema);
