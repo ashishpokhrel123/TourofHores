@@ -1,24 +1,18 @@
 var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-
-var villainSchema = new Schema({
-    name: {
-        type: String,
-        required: true
+var villainsSchema = new mongoose.Schema({
+    name:{
+        type:String,
+        required:true
     },
-    desc: {
-        type: String,
-        required: true
+    desc:{
+        type:String,
+        required:true
     },
     fight:[{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:'Hero'
+        type:mongoose.Schema.ObjectId,
+        ref:'heroes'
+        }]
 
-    }]
-    
-}, {
-        timestamps: true
-    });
+},{timestamps:true});
 
-var Villains = mongoose.model('Villain', villainSchema);
-module.exports = Villains;
+module.exports=mongoose.model('villains',villainsSchema);

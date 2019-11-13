@@ -17,10 +17,11 @@ const heroesSchema = new mongoose.Schema({
     comment: [commentSchema],
     fight:[{
         type:mongoose.Schema.Types.ObjectId,
-        ref:'Villans'
+        ref:'villains'
 
     }]
 },{timestamps:true});
 
 module.exports = mongoose.model('heroes', heroesSchema);
+
 

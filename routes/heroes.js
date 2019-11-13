@@ -36,9 +36,13 @@ router.route('/:id')
     }).catch(next);
  })
  .post((req,res,next)=>{
-    res.statusCode = 405;
-    res.send("Method not supported");
- })
+    Heroes.create(req.body)
+    .then((heroes)=>{
+        res.statusCode=201;
+        res.json(heroes);
+    })
+    .catch(next);
+})
 .put((req,res,next)=>{
     Heroes.findByIdAndUpdate(req.params.id,{$set:  req.body},{new: true})
    .then((reply)=> {
